@@ -5,7 +5,7 @@ This project focuses on applying modern React fundamentals, custom hooks, API in
 
 ## Live Demo
 
-Coming soon.
+https://reactmoviessearch.netlify.app/
 
 ## Features
 
