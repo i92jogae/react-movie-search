@@ -1,16 +1,17 @@
 :root {
-  color-scheme: dark;
-  --bg: #0f172a;
-  --bg-soft: #111827;
-  --surface: rgba(15, 23, 42, 0.78);
-  --surface-strong: #111827;
-  --border: rgba(148, 163, 184, 0.22);
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --accent: #38bdf8;
-  --accent-strong: #0ea5e9;
-  --danger: #f87171;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  color-scheme: light;
+  --bg: #f8fafc;
+  --bg-soft: #eff6ff;
+  --surface: #ffffff;
+  --surface-strong: #f1f5f9;
+  --border: #dbe3ef;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --danger: #dc2626;
+  --shadow: 0 22px 55px rgba(15, 23, 42, 0.10);
 }
 
 * {
@@ -22,9 +23,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32rem),
-    radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 28rem),
-    var(--bg);
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.15), transparent 34rem),
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.14), transparent 30rem),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 45%, #eef2ff 100%);
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -41,7 +42,7 @@ button {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid rgba(56, 189, 248, 0.35);
+  outline: 3px solid rgba(37, 99, 235, 0.25);
   outline-offset: 3px;
 }
 
@@ -62,13 +63,13 @@ input:focus-visible {
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(37, 99, 235, 0.18);
   border-radius: 999px;
   padding: 6px 12px;
-  color: var(--accent);
-  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -78,6 +79,7 @@ input:focus-visible {
   font-size: clamp(2.5rem, 8vw, 5.2rem);
   line-height: 0.95;
   letter-spacing: -0.07em;
+  color: var(--text);
 }
 
 .hero__description {
@@ -92,6 +94,12 @@ input:focus-visible {
   grid-template-columns: minmax(220px, 430px) auto auto;
   gap: 12px;
   width: min(100%, 720px);
+  padding: 10px;
+  border: 1px solid rgba(219, 227, 239, 0.85);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
 }
 
 .search-form__field input {
@@ -100,22 +108,25 @@ input:focus-visible {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 0 18px;
-  background: rgba(15, 23, 42, 0.78);
+  background: var(--surface);
   color: var(--text);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 1px 0 rgba(15, 23, 42, 0.02);
 }
 
 .search-form__field input::placeholder {
-  color: #64748b;
+  color: #94a3b8;
+}
+
+.search-form__field input:focus {
+  border-color: rgba(37, 99, 235, 0.65);
 }
 
 .button {
   min-height: 54px;
   border-radius: 16px;
   padding: 0 22px;
-  color: var(--text);
   font-weight: 800;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, color 160ms ease;
 }
 
 .button:hover {
@@ -123,13 +134,23 @@ input:focus-visible {
 }
 
 .button--primary {
-  background: linear-gradient(135deg, var(--accent-strong), #2563eb);
-  box-shadow: 0 14px 28px rgba(14, 165, 233, 0.22);
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
+}
+
+.button--primary:hover {
+  box-shadow: 0 18px 34px rgba(37, 99, 235, 0.28);
 }
 
 .button--ghost {
   border: 1px solid var(--border);
-  background: rgba(15, 23, 42, 0.64);
+  background: var(--surface);
+  color: var(--accent-strong);
+}
+
+.button--ghost:hover {
+  background: var(--bg-soft);
 }
 
 .toolbar {
@@ -145,7 +166,11 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;
   color: var(--muted);
+  background: rgba(255, 255, 255, 0.72);
   cursor: pointer;
   user-select: none;
 }
@@ -159,6 +184,7 @@ input:focus-visible {
 .results-count {
   margin: 0;
   color: var(--muted);
+  font-weight: 700;
 }
 
 .message {
@@ -188,13 +214,14 @@ input:focus-visible {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 24px;
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+  background: var(--surface);
   box-shadow: var(--shadow);
-  transition: transform 180ms ease, border-color 180ms ease;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .movie-card:hover {
-  border-color: rgba(56, 189, 248, 0.55);
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 28px 65px rgba(15, 23, 42, 0.16);
   transform: translateY(-4px);
 }
 
@@ -219,6 +246,7 @@ input:focus-visible {
 
 .movie-card h3 {
   margin: 0;
+  color: var(--text);
   font-size: 1rem;
   line-height: 1.25;
 }
@@ -229,6 +257,7 @@ input:focus-visible {
   gap: 10px;
   color: var(--muted);
   font-size: 0.9rem;
+  font-weight: 700;
   text-transform: capitalize;
 }
 
@@ -241,9 +270,10 @@ input:focus-visible {
   border: 1px solid var(--border);
   border-radius: 28px;
   padding: 42px 28px;
-  background: rgba(15, 23, 42, 0.62);
+  background: rgba(255, 255, 255, 0.78);
   text-align: center;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
 }
 
 .empty-state__icon {
@@ -255,19 +285,24 @@ input:focus-visible {
   margin: 0;
 }
 
+.empty-state h2 {
+  color: var(--text);
+}
+
 .empty-state p {
   color: var(--muted);
 }
 
 .skeleton {
   border-radius: 14px;
-  background: linear-gradient(90deg, #1e293b, #334155, #1e293b);
+  background: linear-gradient(90deg, #e2e8f0, #f8fafc, #e2e8f0);
   background-size: 200% 100%;
   animation: shimmer 1.2s infinite;
 }
 
 .movie-card--skeleton {
   padding: 14px;
+  background: var(--surface);
 }
 
 .skeleton--poster {
@@ -318,6 +353,7 @@ input:focus-visible {
 
   .search-form {
     grid-template-columns: 1fr;
+    padding: 8px;
   }
 
   .button {

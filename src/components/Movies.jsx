@@ -1,4 +1,4 @@
-const POSTER_FALLBACK = 'https://placehold.co/300x450/111827/e5e7eb?text=No+Poster'
+const POSTER_FALLBACK = 'https://placehold.co/300x450/e2e8f0/475569?text=No+Poster'
 
 function MovieCard ({ movie }) {
   return (

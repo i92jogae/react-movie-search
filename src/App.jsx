@@ -1,37 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import debounce from 'just-debounce-it'
 import './App.css'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
-
-function useSearch () {
-  const [search, updateSearch] = useState('')
-  const [error, setError] = useState('')
-  const isFirstInput = useRef(true)
-
-  useEffect(() => {
-    const trimmedSearch = search.trim()
-
-    if (isFirstInput.current) {
-      isFirstInput.current = trimmedSearch === ''
-      return
-    }
-
-    if (trimmedSearch === '') {
-      setError('')
-      return
-    }
-
-    if (trimmedSearch.length < 3) {
-      setError('Introduce al menos 3 caracteres para buscar una película')
-      return
-    }
-
-    setError('')
-  }, [search])
-
-  return { search, updateSearch, error }
-}
+import { useSearch } from './hooks/useSearch'
 
 function App () {
   const [sort, setSort] = useState(false)
